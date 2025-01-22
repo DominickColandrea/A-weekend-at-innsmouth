@@ -1,0 +1,7 @@
+Game.Animations = {
+
+	screenShake(){
+
+	},
+	
+};

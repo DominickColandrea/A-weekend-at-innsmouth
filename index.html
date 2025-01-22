@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A Weekend at Innsmouth</title>
+   <link rel="icon" type="image/png" href="images/favicon-32x32.png">
+   <link rel="preload" href="fonts/SyneMono-Regular.woff2" as="font" crossorigin="anonymous">
+   <link rel="preload" href="fonts/SyneMono-Regular.woff" as="font" crossorigin="anonymous">
+  </head>
+  <body>
+    <style type="text/css">
+      @font-face { 
+      font-family: 'Syne Mono'; 
+      font-weight: normal;
+      font-style: normal;
+      src: url('fonts/SyneMono-Regular.woff2')  format('woff2'),
+           url('fonts/SyneMono-Regular.woff')  format('woff');
+
+      font-display: swap;
+      }
+    </style>
+
+  	 <script src="assets/rot.min.js"></script>
+     <script src="assets/sprintf.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+    <script src="assets/colors.js"></script>
+
+    <script src="assets/game.js"></script>
+    <script src="assets/animations.js"></script>
+    <script src="assets/screens.js"></script>
+    <script src="assets/glyph.js"></script>
+    <script src="assets/dynamicglyph.js"></script>
+    <script src="assets/tile.js"></script>
+    <script src="assets/builder.js"></script>
+    <script src="assets/map.js"></script>
+    <script src="assets/entitymixins.js"></script>
+    <script src="assets/entity.js"></script>
+    <script src="assets/item.js"></script>
+    <script src="assets/itemmixins.js"></script>
+    <script src="assets/repo.js"></script>
+    <script src="assets/entities.js"></script>
+    <script src="assets/items.js"></script>
+
+    <style>
+    	body{
+        overflow: hidden;
+    		background: black;
+    	}
+    	canvas{
+    		padding-left: 0;
+    		padding-right: 0;
+    		margin-left: auto;
+    		margin-right: auto;
+    		display: block;
+        rotate: 0.3deg;
+        border: 1px solid #b1b1b1;
+        padding: 10px;
+
+        width: 90%;
+        max-width: 896px;
+
+        position: relative;
+    	}
+    </style>
+  </body>
+</html>
