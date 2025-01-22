@@ -92,25 +92,57 @@ Game.EntityMixins.CitizenActor = {
 
         this.dialogue = template['dialogue'] || function(player) {
             Game.sendMessage(player, this.name+":");
-           Game.sendMessage(player, 'Hello');
+
+            if (ROT.RNG.getUniform() <= 0.01) {
+                Game.sendMessage(player, '%c{'+color.red+'}We will sleep again soon.');
+            }
+            else{
+                Game.sendMessage(player, 'Welcome to Innsmouth.');
+            }
         };
     },
     act() {
-        //maybe refactor this to run off the game scheduler
 
         //run action every "minute"
         if (Game.counter == 2) {
-            //either add in pathfinding (A*?) and or add this to the citizen template so innkeepers dont move?
-            //maybe give inkeepers their own movement code?
 
-            // Flip coin to determine if moving by 1 in the positive or negative direction
-            let moveOffset = (Math.round(Math.random()) === 1) ? 1 : -1;
-            // Flip coin to determine if moving in x direction or y direction
-            if (Math.round(Math.random()) === 1) {
-                this.tryMove(this.getX() + moveOffset, this.getY(), this.getZ());
-            } else {
-                this.tryMove(this.getX(), this.getY() + moveOffset, this.getZ());
-            }
+            let newTarget = this.map.getRandomFloorPosition(0);
+
+            //Generate the path and move to the first tile.
+            let source = this;
+            let z = source.getZ();
+            let path = new ROT.Path.AStar(newTarget.x, newTarget.y, function(x, y) {
+                // If an entity is present at the tile, can't move there.
+                let entity = source.getMap().getEntityAt(x, y, z);
+                if (entity && entity !== this.player && entity !== source) {
+                    return false;
+                }
+                return source.getMap().getTile(x, y, z).walkableFunct();
+            }, {topology: 4});
+            // Once we've gotten the path, we want to move to the second cell that is
+            // passed in the callback (the first is the entity's strting point)
+            let count = 0;
+            path.compute(source.getX(), source.getY(), function(x, y) {
+                if (count == 1) {
+                    source.tryMove(x, y, z);
+                }
+                count++;
+            });
+
+
+
+
+//            // Flip coin to determine if moving by 1 in the positive or negative direction
+//            let moveOffset = (Math.round(Math.random()) === 1) ? 1 : -1;
+//            // Flip coin to determine if moving in x direction or y direction
+//            if (Math.round(Math.random()) === 1) {
+//                this.tryMove(this.getX() + moveOffset, this.getY(), this.getZ());
+//            } else {
+//                this.tryMove(this.getX(), this.getY() + moveOffset, this.getZ());
+//            }
+
+
+
         }
     }
 }

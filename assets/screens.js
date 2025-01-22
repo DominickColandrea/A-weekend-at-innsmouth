@@ -357,7 +357,7 @@ Game.Screen.playScreen = {
                         }
                         else if (this.player.pickupItems([0])) {
                             //pickup necro
-                            console.log(item)
+                            
                             if (item.name == "necronomicon") {
                                 Game.sendMessage(this.player, "Upon picking up the necronomicon you make your way back to the surface.");
                                 Game.time.trueHour+=3;
@@ -407,7 +407,6 @@ Game.Screen.playScreen = {
 
                 } 
                 else if (inputData.key === ".") {
-                    Game.counter = 1;
                     Game.refresh();
                 }
 
