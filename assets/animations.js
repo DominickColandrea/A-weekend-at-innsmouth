@@ -1,7 +1,13 @@
 Game.Animations = {
 
-	screenShake(){
+	screenFlashRed(){
+		  
+	},
 
+	screenShake(){
+		$(document).ready(function() {
+			$( "canvas" ).effect( "shake",{duration:100} );
+		});
 	},
 	
 };

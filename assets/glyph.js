@@ -4,6 +4,7 @@ Game.Glyph = function(properties) {
     this.char = properties['character'] || ' ';
     this.foreground = properties['foreground'] || 'white';
     this.background = properties['background'] || 'black';
+    this.name = properties['name'] || 'Null';
 };
 
 // Create standard getters for glyphs

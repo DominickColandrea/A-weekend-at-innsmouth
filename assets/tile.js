@@ -39,6 +39,7 @@ Game.getNeighborPositions = function(x, y) {
 
 Game.Tile.nullTile = new Game.Tile({});
 Game.Tile.floorTile = new Game.Tile({
+    name: "Floor",
     character: '.',
     foreground: color.blue,
     walkable: true,
@@ -72,12 +73,14 @@ Game.Tile.digTile = new Game.Tile({
 });
 
 Game.Tile.stairsUpTile = new Game.Tile({
+    name: "Stairs [Up]",
     character: '<',
     foreground: 'white',
     walkable: true,
     blocksLight: false
 });
 Game.Tile.stairsDownTile = new Game.Tile({
+    name: "Stairs [Down]",
     character: '>',
     foreground: 'white',
     walkable: true,
@@ -85,6 +88,7 @@ Game.Tile.stairsDownTile = new Game.Tile({
 });
 
 Game.Tile.mossTile = new Game.Tile({
+    name: "Moss",
     character: ',',
     foreground: color.mossGreen,
     walkable: true,
@@ -92,6 +96,7 @@ Game.Tile.mossTile = new Game.Tile({
 });
 
 Game.Tile.grassTile = new Game.Tile({
+    name: "Grass",
     character: ',',
     foreground: color.green,
     walkable: true,
@@ -99,6 +104,7 @@ Game.Tile.grassTile = new Game.Tile({
 });
 
 Game.Tile.smoothStoneTile = new Game.Tile({
+    name: "Smooth Stone",
     character: '_',
     foreground: color.grey,
     walkable: true,
@@ -106,6 +112,7 @@ Game.Tile.smoothStoneTile = new Game.Tile({
 });
 
 Game.Tile.buildingFloorTile = new Game.Tile({
+    name: "Building Floor",
     character: '.',
     foreground: color.brown,
     walkable: true,
@@ -113,6 +120,7 @@ Game.Tile.buildingFloorTile = new Game.Tile({
 });
 
 Game.Tile.buildingInnFloorTile = new Game.Tile({
+    name: "Building Floor",
     character: '.',
     foreground: color.brown,
     walkable: true,
@@ -120,6 +128,7 @@ Game.Tile.buildingInnFloorTile = new Game.Tile({
 });
 
 Game.Tile.buildingShopFloorTile = new Game.Tile({
+    name: "Building Floor",
     character: '.',
     foreground: color.brown,
     walkable: true,
@@ -127,6 +136,7 @@ Game.Tile.buildingShopFloorTile = new Game.Tile({
 });
 
 Game.Tile.buildingBlacksmithFloorTile = new Game.Tile({
+    name: "Building Floor",
     character: '.',
     foreground: color.brown,
     walkable: true,
@@ -141,6 +151,7 @@ Game.Tile.buildingTableTile = new Game.Tile({
 });
 
 Game.Tile.bedTile = new Game.Tile({
+    name: "Bed",
     character: '8',
     foreground: color.blue,
     walkable: true,
@@ -157,6 +168,7 @@ Game.Tile.treeTile = new Game.Tile({
 });
 
 Game.Tile.doorTile = new Game.Tile({
+    name: "Door",
     character: '[]',
     foreground: color.lightBlue,
     diggable: false,

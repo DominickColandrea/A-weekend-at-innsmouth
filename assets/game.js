@@ -19,7 +19,7 @@ let Game = {
     init() {
         this.display = new ROT.Display({
             width:this.screenWidth,
-            height:this.screenHeight+ 1,//+1 for the UI
+            height:this.screenHeight+ 3,//+1 for the UI
             fontSize:28,
             forceSquareRatio: true,
             fontFamily: "Syne Mono, monospace"

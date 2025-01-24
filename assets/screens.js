@@ -194,17 +194,21 @@ Game.Screen.playScreen = {
          if (Game.time.minute <10) {
             let timeUI = '%c{white}%b{black}';
             timeUI += vsprintf('Day %d   %d:%d%d %s', [Game.time.day,Game.time.hour, Game.time.minute-Game.time.minute,Game.time.minute, Game.time.cycle]);
-            display.drawText(screenWidth/2, screenHeight, timeUI);
+            display.drawText(0, screenHeight+2, timeUI);
          }
          else{
             let timeUI = '%c{white}%b{black}';
             timeUI += vsprintf('Day %d   %d:%d %s', [Game.time.day, Game.time.hour, Game.time.minute, Game.time.cycle]);
-            display.drawText(screenWidth/2, screenHeight, timeUI);
+            display.drawText(0, screenHeight+2, timeUI);
          }
 
          // Render hunger state
          let hungerState = this.player.getHungerState();
-         display.drawText(screenWidth - hungerState.length, screenHeight-1, hungerState);
+         display.drawText(0, screenHeight+1, hungerState);
+
+         // Render tile
+         let playerTile = this.player.getMap().getTile(this.player.x, this.player.y, this.player.z );
+         display.drawText(screenWidth - 10, screenHeight+1, playerTile.name);
 
     },
     handleInput(inputType, inputData) {

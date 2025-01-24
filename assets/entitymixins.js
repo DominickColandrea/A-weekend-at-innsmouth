@@ -73,10 +73,46 @@ Game.EntityMixins.TownActor = {
     groupName: 'Actor',
     init(template) {
         this.name = template['name'] || "Citizen";
+        this.dialogueSeed = template['dialogueSeed'] || ROT.RNG.getUniform();
 
         this.dialogue = template['dialogue'] || function(player) {
-            Game.sendMessage(player, this.name+":");
-           Game.sendMessage(player, 'Hello');
+            
+                Game.sendMessage(player, this.name+":");
+            
+                if (this.dialogueSeed <= 0.01) {
+                    Game.sendMessage(player, '%c{'+color.red+'}We will sleep again soon.');
+                }
+                else if (this.dialogueSeed <= 0.1) {
+                    Game.sendMessage(player, 'Is this the end of times?');
+                }
+                else if (this.dialogueSeed <= 0.2) {
+                    Game.sendMessage(player, 'Sorry, I know nothing.');
+                }
+                else if (this.dialogueSeed <= 0.3) {
+                    Game.sendMessage(player, 'That blacksmith has been losing his touch lately.');
+                }
+                else if (this.dialogueSeed <= 0.4) {
+                    Game.sendMessage(player, 'Little James went missing this week.');
+                }
+                else if (this.dialogueSeed <= 0.5) {
+                    Game.sendMessage(player, 'At night I hear chants coming from below.');
+                }
+                else if (this.dialogueSeed <= 0.6) {
+                    Game.sendMessage(player, 'I am much too busy to talk to a stranger.');
+                }
+                else if (this.dialogueSeed <= 0.7) {
+                    Game.sendMessage(player, 'That deadbeat owes most people some gold.');
+                }
+                else if (this.dialogueSeed <= 0.8) {
+                    Game.sendMessage(player, 'Not all walls are as they seem.');
+                }
+                else if (this.dialogueSeed <= 0.9) {
+                    Game.sendMessage(player, 'One of these houses was recently abandoned.');
+                }
+                else{
+                    Game.sendMessage(player, 'Welcome to Innsmouth.');
+                }
+
         };
     },
     act() {
@@ -90,21 +126,8 @@ Game.EntityMixins.CitizenActor = {
     init(template) {
         this.name = template['name'] || "Citizen";
 
-        this.dialogue = template['dialogue'] || function(player) {
-            Game.sendMessage(player, this.name+":");
-
-            if (ROT.RNG.getUniform() <= 0.01) {
-                Game.sendMessage(player, '%c{'+color.red+'}We will sleep again soon.');
-            }
-            else{
-                Game.sendMessage(player, 'Welcome to Innsmouth.');
-            }
-        };
     },
     act() {
-
-        //run action every "minute"
-        if (Game.counter == 2) {
 
             let newTarget = this.map.getRandomFloorPosition(0);
 
@@ -129,21 +152,6 @@ Game.EntityMixins.CitizenActor = {
                 count++;
             });
 
-
-
-
-//            // Flip coin to determine if moving by 1 in the positive or negative direction
-//            let moveOffset = (Math.round(Math.random()) === 1) ? 1 : -1;
-//            // Flip coin to determine if moving in x direction or y direction
-//            if (Math.round(Math.random()) === 1) {
-//                this.tryMove(this.getX() + moveOffset, this.getY(), this.getZ());
-//            } else {
-//                this.tryMove(this.getX(), this.getY() + moveOffset, this.getZ());
-//            }
-
-
-
-        }
     }
 }
 Game.EntityMixins.QuestGiver = {
@@ -225,6 +233,8 @@ Game.EntityMixins.Attacker = {
             Game.sendMessage(target, 'The %s strikes you for %d damage!', 
                 [this.getName(), damage]);
 
+            Game.Animations.screenShake();
+            
             target.takeDamage(this, damage);
         }
     }

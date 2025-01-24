@@ -50,7 +50,7 @@ Game.Map = function(tiles, player) {
 
         if (z == 0) {
             //add npcs to buildings
-            this.addNPC(7, 0, "citizen");
+            this.addNPC(12, 0, "citizen");
             this.addNPC(1, 0, "scholar");
             this.addInnNPC(1, 0, "innkeeper");
             this.addShopNPC(1, 0, "shopkeeper");

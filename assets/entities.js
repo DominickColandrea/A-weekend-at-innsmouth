@@ -180,16 +180,7 @@ Game.EntityRepository.define('citizen',{
     name: "Citizen",
     character: 'C',
     foreground: color.blue,
-    dialogue(player){
-        Game.sendMessage(player, this.name+":");
-
-        if (ROT.RNG.getUniform() <= 0.01) {
-            Game.sendMessage(player, '%c{'+color.red+'}We will sleep again soon.');
-        }
-        else{
-            Game.sendMessage(player, 'Welcome to Innsmouth.');
-        }
-    },
+    speed: 500,
     mixins: [Game.EntityMixins.CitizenActor, Game.EntityMixins.TownActor]
 });
 
